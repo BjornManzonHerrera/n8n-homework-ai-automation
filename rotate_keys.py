@@ -6,7 +6,7 @@ from google.cloud import monitoring_v3
 from google.oauth2 import service_account
 
 # Configuration for multiple projects
-PROJECT_IDS = ["ai-homework-1-123456", "ai-homework-2-789012", "ai-homework-3-345678"]  # Replace with your project IDs
+PROJECT_IDS = ["gemini-api-account-1", "civil-tube-468205-a0", "gemini-monitor-3"]  # Replace with your project IDs
 ENV_FILES = [".env.account1", ".env.account2", ".env.account3"]
 CREDENTIALS_PATHS = [
     "credentials_account1.json",
