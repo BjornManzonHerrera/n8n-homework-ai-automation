@@ -1,0 +1,3 @@
+[submodule "canvas-ai-helper"]
+	path = canvas-ai-helper
+	url = ./canvas-ai-helper

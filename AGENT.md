@@ -1,0 +1,36 @@
+# AI Homework Automation System
+## Project Overview
+- **Goal**: Automate Canvas LMS assignment processing (essays, quizzes, graphics, PowerPoint slides, research papers) triggered by Discord slash commands, processed via FastAPI on Hugging Face Spaces, orchestrated by Make.com/n8n, and stored in Google Docs/Drive.
+- **Core Stack**:
+  - Canvas LMS API: Fetch courses and assignments
+  - Make.com/n8n: Workflow automation (self-hosted n8n at `http://localhost:5678`)
+  - FastAPI: Backend API on Hugging Face Spaces (`/process`, `/generate_essay`, etc.)
+  - Discord.js: Bot with slash commands (e.g., `/get_assignments`, `/approve`)
+  - ngrok: Exposes n8n/Make.com webhooks (e.g., `https://<ngrok-id>.ngrok.io/webhook/discord-webhook`)
+  - Google Docs/Drive API: Store essays, quizzes, graphics
+  - Hugging Face: Free models for essay generation (`gpt2`), OCR (`TrOCR`), image generation (`stable-diffusion-2`)
+  - Tesseract: Local OCR for Canvas slide PDFs
+  - Gemini CLI: Code generation, debugging, automation
+- **Directory Structure**:
+  - `/bot`: Discord bot (`index.js`, `/commands/get_assignments.js`)
+  - `/api`: FastAPI backend (`app.py`, `prompts.py`, `ocr_script.py`)
+  - `/workflows`: Make.com/n8n configurations (`n8n_workflow.json`, `make_canvas.json`)
+  - `/examples`: Sample scripts (`discord_bot.js`, `app.py`, `ocr_script.py`)
+  - `/cache`: Cached Canvas API responses (`cache.json`)
+- **Multi-Agentic Setup**:
+  - **Coding Agent**: Generates code for FastAPI, Discord bot, OCR, quiz generation, PowerPoint, research papers
+  - **Analysis Agent**: Debugs logs, evaluates OCR tools, optimizes prompts
+  - **Integration Agent**: Manages webhooks, Canvas API caching, Git operations
+- **Automation Goals**:
+  - Confirm code changes with user (e.g., "Confirm changes to app.py? [y/n]")
+  - Prompt for remote Git repository URL (e.g., GitHub)
+  - Automate startup (n8n, Discord bot, ngrok) and webhook updates
+  - Cache Canvas API responses to reduce calls
+  - Add retry logic and Discord error alerts
+- **Current Status**:
+  - Discord bot commands registered
+  - n8n webhook functional via ngrok
+  - Canvas API integration working
+  - FastAPI deployed on Hugging Face and tested locally
+  - n8n filter node needs debugging
+  - Automation (startup, webhook URLs) manual

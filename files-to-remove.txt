@@ -1,0 +1,4 @@
+credentials_account1.json
+credentials_account2.json
+credentials_account3.json
+.env
