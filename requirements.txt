@@ -1,0 +1,12 @@
+fastapi==0.103.0
+uvicorn==0.23.2
+requests==2.31.0
+python-dotenv==1.0.0
+pytesseract==0.3.10
+pdf2image==1.16.3
+google-api-python-client==2.93.0
+google-auth-oauthlib==1.0.0
+reportlab==4.0.4
+python-pptx==0.6.21
+huggingface_hub==0.16.4
+google-cloud-monitoring==2.21.0
