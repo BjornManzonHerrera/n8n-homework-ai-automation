@@ -45,6 +45,13 @@ Guide Gemini CLI in setting up the project environment, installing dependencies,
     - Discord bot: `node bot/index.js`
     - FastAPI: `uvicorn app:app --reload`
     - ngrok: `ngrok http 5678`
+- **API Key Rotation**:
+  - Create three Google Cloud projects (`ai-homework-1`, `ai-homework-2`, `ai-homework-3`)
+  - Create service accounts (`gemini-monitor-1`, etc.) with Monitoring Viewer role
+  - Save JSON keys as `credentials_account1.json`, `credentials_account2.json`, `credentials_account3.json`
+  - Save API keys in `.env.account1`, `.env.account2`, `.env.account3`
+  - Update `rotate_keys.py` with project IDs
+  - Run: `python rotate_keys.py`
 - **Git Setup**:
   - Initialize: `git init`
   - Prompt user: `Enter remote Git repository URL (e.g., https://github.com/user/repo.git)`

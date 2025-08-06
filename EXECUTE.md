@@ -37,6 +37,9 @@ Define agent-specific tasks and commands for Gemini CLI to execute, debug, or ex
     - `git add . && git commit -m "<task> integration" && git push origin main`
 
 ## General Execution
+- **API Key Rotation**:
+  - Rotate API keys across projects: `python rotate_keys.py`
+  - Monitor API usage with service account credentials
 - **Startup**:
   - Run: `start.bat` to launch n8n, Discord bot, ngrok, and update webhooks
   - Schedule: Use Windows Task Scheduler for daily runs
