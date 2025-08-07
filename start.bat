@@ -13,11 +13,7 @@ if exist requirements.txt (
 .\venv\Scripts\pip.exe install python-dotenv
 call .\venv\Scripts\python.exe rotate_keys.py
 :: Prompt for Git repository URL
-set /p REPO_URL=Enter remote Git repository URL (e.g., https://github.com/user/repo.git): 
-if not exist .git (
-    git init
-    git remote add origin %REPO_URL%
-)
+git remote set-url origin https://github.com/BjornManzonHerrera/ai-n8n-canvas-discord-bot.git
 :: Start services
 start n8n start --tunnel
 timeout /t 15
