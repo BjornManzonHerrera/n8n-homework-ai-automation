@@ -10,7 +10,7 @@ if exist requirements.txt (
     exit /b 1
 )
 :: Rotate Gemini CLI API key
-call .\venv\Scripts\python.exe rotate_keys.py
+python rotate_keys.py
 :: Prompt for Git repository URL
 set /p REPO_URL=Enter remote Git repository URL (e.g., https://github.com/user/repo.git): 
 if not exist .git (
@@ -24,7 +24,7 @@ start node bot/index.js
 ngrok http 5678 > ngrok_url.txt
 set /p NGROK_URL=<ngrok_url.txt
 :: Update n8n webhook
-curl -X PUT -H "Content-Type: application/json" -d "{\"webhook_url\": \"%NGROK_URL%/webhook/discord-webhook\"}" http://localhost:5678/rest/workflows/1
+curl -X PUT -H "Content-Type: application/json" -d "{\"webhook_url\": \"%NGROK_URL%/webhook/discord-webhook\"}" http://localhost:5678/api/v1/workflows/1
 :: Confirm Git commit
 echo Confirm committing changes to Git? [y/n]
 set /p CONFIRM=
