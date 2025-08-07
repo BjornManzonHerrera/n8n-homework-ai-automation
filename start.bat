@@ -31,7 +31,7 @@ set /p CONFIRM=
 if %CONFIRM%==y (
     git add .
     git commit -m "Automated startup, webhook update, and API key rotation"
-    git push origin main
+    git push origin master
 )
 :: Deactivate virtual environment
 deactivate
