@@ -48,9 +48,12 @@ def rotate_keys():
     import os
 import json
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import glob
 >>>>>>> 7936c0f (fix: include git-ignored files in .env search)
+=======
+>>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
 from dotenv import dotenv_values
 
 def rotate_keys():
@@ -59,6 +62,9 @@ def rotate_keys():
     and rotates to the next available key by updating the index in current_key.json.
     """
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
     env_files = []
     i = 1
     while True:
@@ -70,6 +76,7 @@ def rotate_keys():
         else:
             break
 
+<<<<<<< HEAD
     if not env_files:
         print("No .env.account* files found.")
 =======
@@ -80,6 +87,10 @@ def rotate_keys():
         print("No .env.account* files found.")
         # As a fallback, check for a single .env file
 >>>>>>> 7936c0f (fix: include git-ignored files in .env search)
+=======
+    if not env_files:
+        print("No .env.account* files found.")
+>>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
         if os.path.exists('.env'):
             env_files.append('.env')
         else:
@@ -90,12 +101,16 @@ def rotate_keys():
     print(f"Reading keys from: {', '.join(env_files)}")
     for file in env_files:
 <<<<<<< HEAD
+<<<<<<< HEAD
         env_vars = dotenv_values(dotenv_path=file)
 =======
         # Load key-value pairs from the file without modifying the environment
         env_vars = dotenv_values(dotenv_path=file)
         # Find all keys in this file that start with GEMINI_API_KEY
 >>>>>>> 7936c0f (fix: include git-ignored files in .env search)
+=======
+        env_vars = dotenv_values(dotenv_path=file)
+>>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
         keys_in_file = [v for k, v in env_vars.items() if k.startswith("GEMINI_API_KEY")]
         all_keys.extend(keys_in_file)
 
@@ -104,9 +119,12 @@ def rotate_keys():
         return
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     # Get the current key index from the file
 >>>>>>> 7936c0f (fix: include git-ignored files in .env search)
+=======
+>>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
     try:
         with open('current_key.json', 'r') as f:
             data = json.load(f)
@@ -114,6 +132,7 @@ def rotate_keys():
     except (FileNotFoundError, json.JSONDecodeError):
         current_key_index = 0
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     next_key_index = (current_key_index + 1) % len(all_keys)
 
@@ -123,6 +142,10 @@ def rotate_keys():
 
     # Save the new index back to the file
 >>>>>>> 7936c0f (fix: include git-ignored files in .env search)
+=======
+    next_key_index = (current_key_index + 1) % len(all_keys)
+
+>>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
     with open('current_key.json', 'w') as f:
         json.dump({'key_index': next_key_index}, f)
     
