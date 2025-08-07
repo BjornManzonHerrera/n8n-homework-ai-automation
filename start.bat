@@ -4,13 +4,13 @@ call .\venv\Scripts\activate.bat
 :: Install dependencies from requirements.txt
 if exist requirements.txt (
     echo Installing dependencies from requirements.txt...
-    pip install -r requirements.txt
+    .\venv\Scripts\pip.exe install -r requirements.txt
 ) else (
     echo requirements.txt not found. Please create it with required dependencies.
     exit /b 1
 )
 :: Rotate Gemini CLI API key
-pip install python-dotenv
+.\venv\Scripts\pip.exe install python-dotenv
 call .\venv\Scripts\python.exe rotate_keys.py
 :: Prompt for Git repository URL
 set /p REPO_URL=Enter remote Git repository URL (e.g., https://github.com/user/repo.git): 
