@@ -4,6 +4,7 @@ import json
 from dotenv import load_dotenv
 from google.cloud import monitoring_v3
 from google.oauth2 import service_account
+from google.protobuf.timestamp_pb2 import Timestamp
 
 # Configuration for multiple projects
 PROJECT_IDS = ["gemini-api-account-1", "civil-tube-468205-a0", "gemini-monitor-3"]  # Replace with your project IDs
@@ -24,13 +25,20 @@ def get_api_usage(credentials_path, project_index):
         client = monitoring_v3.MetricServiceClient(credentials=credentials)
         project_name = f"projects/{PROJECT_IDS[project_index]}"
         query = (
-            f'metric.type="api.googleapis.com/requests" AND '
+            f'metric.type="api.googleapis.com/requests" AND ' 
             f'resource.labels.api_key=~".*"'
         )
-        interval = monitoring_v3.TimeInterval()
         now = time.time()
-        interval.end_time.seconds = int(now)
-        interval.start_time.seconds = int(now - 24 * 3600)  # Last 24 hours
+        end_time = Timestamp()
+        end_time.seconds = int(now)
+        start_time = Timestamp()
+        start_time.seconds = int(now - 24 * 3600)  # Last 24 hours
+
+        interval = monitoring_v3.TimeInterval(
+            start_time=start_time,
+            end_time=end_time,
+        )
+        
         results = client.list_time_series(
             request={
                 "name": project_name,
@@ -101,7 +109,4 @@ if __name__ == "__main__":
     load_current_key()
     # Check usage and rotate if needed
     check_and_rotate_keys()
-    # Run periodically (every hour)
-    while True:
-        time.sleep(3600)  # Check every hour
-        check_and_rotate_keys()
+
