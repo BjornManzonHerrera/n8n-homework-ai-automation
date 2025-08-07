@@ -1,30 +1,67 @@
 @echo off
-:: Activate virtual environment
+cls
+echo.
+echo [INFO] Activating virtual environment...
 call .\venv\Scripts\activate.bat
-:: Install dependencies from requirements.txt
-if exist requirements.txt (
-    echo Installing dependencies from requirements.txt...
-    .\venv\Scripts\pip.exe install -r requirements.txt
-) else (
-    echo requirements.txt not found. Please create it with required dependencies.
+if %errorlevel% neq 0 (
+    echo [ERROR] Failed to activate virtual environment.
     exit /b 1
 )
-:: Rotate Gemini CLI API key
-.\venv\Scripts\pip.exe install python-dotenv
-call .\venv\Scripts\python.exe rotate_keys.py
-:: Set Git repository URL
-git remote set-url origin https://github.com/BjornManzonHerrera/ai-n8n-canvas-discord-bot.git
-:: Start services
-start n8n start --tunnel
-timeout /t 15
-start node bot/index.js
+
+echo.
+
+echo [INFO] Installing dependencies from requirements.txt...
+pip install -r requirements.txt
+if %errorlevel% neq 0 (
+    echo [ERROR] Failed to install dependencies.
+    exit /b 1
+)
+
+echo.
+
+echo [INFO] Rotating API key...
+python rotate_keys.py
+
+echo.
+
+echo [INFO] Loading environment variables...
+for /f "tokens=*" %%a in ('python load_env.py') do (call %%a)
+
+echo.
+
+echo [INFO] Starting background services...
+start "n8n" n8n start --tunnel
+start "Discord Bot" node discord-bot/bot.js
+
+echo.
+
+echo [INFO] Starting ngrok tunnel...
+del ngrok_url.txt 2>nul
 ngrok http 5678 > ngrok_url.txt
+timeout /t 5
+
 set /p NGROK_URL=<ngrok_url.txt
-:: Update n8n webhook
+if not exist ngrok_url.txt (
+    echo [ERROR] ngrok failed to start. ngrok_url.txt not found.
+    exit /b 1
+)
+if not defined NGROK_URL (
+    echo [ERROR] ngrok failed. ngrok_url.txt is empty.
+    exit /b 1
+)
+echo [SUCCESS] ngrok tunnel started at: %NGROK_URL%
+
+echo.
+
+echo [INFO] Waiting for n8n to initialize...
+timeout /t 15
+
+echo.
+
+echo [INFO] Updating n8n webhook...
 curl -X PUT -H "Content-Type: application/json" -H "X-N8N-API-KEY: %N8N_API_KEY%" -d "{"webhook_url": "%NGROK_URL%/webhook/discord-webhook"}" http://localhost:5678/api/v1/workflows/1
-:: Commit changes
-git add .
-git commit -m "Automated startup, webhook update, and API key rotation"
-git push origin master
-:: Deactivate virtual environment
-deactivate
+
+echo.
+
+echo [SUCCESS] Startup sequence complete.
+echo.

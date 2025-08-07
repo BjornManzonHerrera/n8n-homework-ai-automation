@@ -3,7 +3,89 @@ Installing dependencies from requirements.txt...
 Requirement already satisfied: fastapi==0.103.0 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 1)) (0.103.0)
 Requirement already satisfied: uvicorn==0.23.2 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 2)) (0.23.2)
 Requirement already satisfied: requests==2.31.0 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 3)) (2.31.0)
-Requirement already satisfied: python-dotenv==1.0.0 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 4)) (1.0.0)
+Requirement already satisfied: python-dotenv==1.0.
+[notice] A new release of pip is available: 25.0.1 -> 25.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+Reading keys from: .env.account1, .env.account2, .env.account3
+No variables starting with 'GEMINI_API_KEY_' found in any of the .env files.
+
+Waiting for  0 seconds, press a key to continue ...
+curl: (6) Could not resolve host: ngrok-agent
+curl: (6) Could not resolve host: version
+curl: (28) Failed to connect to 2.3.0.41 port 80 after 21032 ms: Could not connect to server
+curl: (6) Could not resolve host: is
+curl: (6) Could not resolve host: too
+curl: (6) Could not resolve host: old.
+curl: (6) Could not resolve host: The
+curl: (6) Could not resolve host: minimum
+curl: (6) Could not resolve host: supported
+curl: (6) Could not resolve host: agent
+curl: (6) Could not resolve host: version
+curl: (6) Could not resolve host: for
+curl: (6) Could not resolve host: your
+curl: (6) Could not resolve host: account
+curl: (6) Could not resolve host: is
+curl: (6) Could not resolve host: 3.7.0.
+curl: (6) Could not resolve host: Please
+curl: (6) Could not resolve host: update
+curl: (6) Could not resolve host: to
+curl: (6) Could not resolve host: a
+curl: (6) Could not resolve host: newer
+curl: (6) Could not resolve host: version
+curl: (6) Could not resolve host: with
+curl: (3) URL rejected: Bad hostname
+curl: (3) URL rejected: Bad hostname
+curl: (6) Could not resolve host: by
+curl: (6) Could not resolve host: downloading
+curl: (6) Could not resolve host: from
+curl: (56) schannel: server closed abruptly (missing close_notify)
+curl: (6) Could not resolve host: or
+curl: (6) Could not resolve host: by
+curl: (6) Could not resolve host: updating
+curl: (6) Could not resolve host: your
+curl: (6) Could not resolve host: SDK
+curl: (6) Could not resolve host: version.
+curl: (6) Could not resolve host: Paid
+curl: (6) Could not resolve host: accounts
+curl: (6) Could not resolve host: are
+curl: (6) Could not resolve host: currently
+curl: (6) Could not resolve host: excluded
+curl: (6) Could not resolve host: from
+curl: (6) Could not resolve host: minimum
+curl: (6) Could not resolve host: agent
+curl: (6) Could not resolve host: version
+curl: (6) Could not resolve host: requirements.
+curl: (6) Could not resolve host: To
+curl: (6) Could not resolve host: begin
+curl: (6) Could not resolve host: handling
+curl: (6) Could not resolve host: traffic
+curl: (6) Could not resolve host: immediately
+curl: (6) Could not resolve host: without
+curl: (6) Could not resolve host: updating
+curl: (6) Could not resolve host: your
+curl: (3) URL rejected: Bad hostname
+curl: (6) Could not resolve host: upgrade
+curl: (6) Could not resolve host: to
+curl: (6) Could not resolve host: a
+curl: (6) Could not resolve host: paid
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+curl: (3) unmatched close brace/bracket in URL position 74:
+https://dashboard.ngrok.com/billing/subscription./webhook/discord-webhook}
+                                                                         ^
+warning: in the working copy of 'ngrok_url.txt', LF will be replaced by CRLF the next time Git touches it
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 17 and 3 different commits each, respectively.
+
+nothing to commit, working tree clean
+To https://github.com/BjornManzonHerrera/ai-n8n-canvas-discord-bot.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/BjornManzonHerrera/ai-n8n-canvas-discord-bot.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+(venv) PS C:\Users\LENOVO\Desktop\n8n-homework-automation> 0 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 4)) (1.0.0)
 Requirement already satisfied: pytesseract==0.3.10 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 5)) (0.3.10)
 Requirement already satisfied: pdf2image==1.16.3 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 6)) (1.16.3)
 Requirement already satisfied: google-api-python-client==2.93.0 in c:\users\lenovo\appdata\local\programs\python\python313\lib\site-packages (from -r requirements.txt (line 7)) (2.93.0)
