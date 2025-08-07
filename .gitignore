@@ -18,3 +18,7 @@ discord-bot/node_modules/
 
 # Other
 n8n-homework-ai-automation.git/
+
+# Local state and logs
+current_key.json
+INTERACT.md
