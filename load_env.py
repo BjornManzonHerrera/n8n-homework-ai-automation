@@ -22,3 +22,13 @@ if __name__ == "__main__":
                 if line.strip() and not line.startswith('#'):
                     key, value = line.strip().split('=', 1)
                     print(f'set {key}={value}')
+    else:
+        # Fallback for git-ignored files
+        import glob
+        env_files = glob.glob(env_file, include_gitignored=True)
+        if env_files:
+            with open(env_files[0], 'r') as f:
+                for line in f:
+                    if line.strip() and not line.startswith('#'):
+                        key, value = line.strip().split('=', 1)
+                        print(f'set {key}={value}')
