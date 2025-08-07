@@ -1,6 +1,16 @@
 @echo off
+:: Activate virtual environment
+call .\venv\Scripts\activate.bat
+:: Install dependencies from requirements.txt
+if exist requirements.txt (
+    echo Installing dependencies from requirements.txt...
+    pip install -r requirements.txt
+) else (
+    echo requirements.txt not found. Please create it with required dependencies.
+    exit /b 1
+)
 :: Rotate Gemini CLI API key
-python rotate_keys.py
+call .\venv\Scripts\python.exe rotate_keys.py
 :: Prompt for Git repository URL
 set /p REPO_URL=Enter remote Git repository URL (e.g., https://github.com/user/repo.git): 
 if not exist .git (
@@ -9,6 +19,7 @@ if not exist .git (
 )
 :: Start services
 start n8n start --tunnel
+timeout /t 15
 start node bot/index.js
 ngrok http 5678 > ngrok_url.txt
 set /p NGROK_URL=<ngrok_url.txt
@@ -22,3 +33,5 @@ if %CONFIRM%==y (
     git commit -m "Automated startup, webhook update, and API key rotation"
     git push origin main
 )
+:: Deactivate virtual environment
+deactivate
