@@ -36,9 +36,9 @@ start "Discord Bot" node discord-bot/bot.js
 echo.
 
 echo [INFO] Starting ngrok tunnel...
-del ngrok_url.txt 2>nul
-ngrok http 5678 > ngrok_url.txt
+start "ngrok" ngrok http 5678
 timeout /t 5
+python get_ngrok_url.py > ngrok_url.txt
 
 set /p NGROK_URL=<ngrok_url.txt
 if not exist ngrok_url.txt (

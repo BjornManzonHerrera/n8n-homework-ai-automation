@@ -1,5 +1,6 @@
 import os
 import json
+<<<<<<< HEAD
 import glob
 from dotenv import dotenv_values
 
@@ -54,6 +55,8 @@ import glob
 >>>>>>> 7936c0f (fix: include git-ignored files in .env search)
 =======
 >>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
+=======
+>>>>>>> 77233fb (Fix: startup script errors and refactor key rotation)
 from dotenv import dotenv_values
 
 def rotate_keys():
@@ -148,12 +151,6 @@ def rotate_keys():
 >>>>>>> 1630326 (fix: correctly locate .env.account files and address ngrok issue)
     with open('current_key.json', 'w') as f:
         json.dump({'key_index': next_key_index}, f)
-    
-    print(f"Found a total of {len(all_keys)} keys.")
-    print(f"Rotated to key index: {next_key_index}")
-
-if __name__ == "__main__":
-    rotate_keys()
     
     print(f"Found a total of {len(all_keys)} keys.")
     print(f"Rotated to key index: {next_key_index}")
