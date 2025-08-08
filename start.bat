@@ -37,7 +37,7 @@ echo.
 
 echo [INFO] Starting ngrok tunnel...
 start "ngrok" ngrok http 5678
-pause
+timeout /t 15
 python get_ngrok_url.py > ngrok_url.txt
 
 set /p NGROK_URL=<ngrok_url.txt
@@ -60,6 +60,7 @@ echo.
 
 echo [INFO] Updating n8n webhook...
 curl -X PUT -H "Content-Type: application/json" -H "X-N8N-API-KEY: %N8N_API_KEY%" -d "{\"webhook_url\": \"%NGROK_URL%/webhook/discord-webhook\"}" http://localhost:5678/api/v1/workflows/1
+
 
 echo.
 
