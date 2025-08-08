@@ -37,7 +37,7 @@ echo.
 
 echo [INFO] Starting ngrok tunnel...
 start "ngrok" ngrok http 5678
-timeout /t 10
+pause
 python get_ngrok_url.py > ngrok_url.txt
 
 set /p NGROK_URL=<ngrok_url.txt
