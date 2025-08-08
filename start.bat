@@ -37,15 +37,7 @@ echo.
 
 echo [INFO] Starting ngrok tunnel...
 start "ngrok" ngrok http 5678
-<<<<<<< HEAD
-<<<<<<< HEAD
-timeout /t 5
-=======
 timeout /t 10
->>>>>>> 0b300f8 (Fix: ngrok and rotate_keys issues, improved startup script)
-=======
-timeout /t 5
->>>>>>> fa54b4b (Update: ngrok and startup script modifications)
 python get_ngrok_url.py > ngrok_url.txt
 
 set /p NGROK_URL=<ngrok_url.txt
@@ -67,7 +59,7 @@ timeout /t 15
 echo.
 
 echo [INFO] Updating n8n webhook...
-curl -X PUT -H "Content-Type: application/json" -H "X-N8N-API-KEY: %N8N_API_KEY%" -d "{"webhook_url": "%NGROK_URL%/webhook/discord-webhook"}" http://localhost:5678/api/v1/workflows/1
+curl -X PUT -H "Content-Type: application/json" -H "X-N8N-API-KEY: %N8N_API_KEY%" -d "{\"webhook_url\": \"%NGROK_URL%/webhook/discord-webhook\"}" http://localhost:5678/api/v1/workflows/1
 
 echo.
 
