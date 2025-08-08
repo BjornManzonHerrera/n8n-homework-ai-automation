@@ -3,7 +3,11 @@ import requests
 import time
 import sys
 
+<<<<<<< HEAD
 def get_ngrok_url(retries=10, delay=2):
+=======
+def get_ngrok_url(retries=20, delay=2):
+>>>>>>> 0b300f8 (Fix: ngrok and rotate_keys issues, improved startup script)
     for i in range(retries):
         try:
             response = requests.get("http://127.0.0.1:4040/api/tunnels")
@@ -27,4 +31,8 @@ if __name__ == "__main__":
         print(url)
         sys.exit(0)
     else:
+<<<<<<< HEAD
         sys.exit(1)
+=======
+        sys.exit(1)
+>>>>>>> 0b300f8 (Fix: ngrok and rotate_keys issues, improved startup script)

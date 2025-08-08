@@ -37,7 +37,11 @@ echo.
 
 echo [INFO] Starting ngrok tunnel...
 start "ngrok" ngrok http 5678
+<<<<<<< HEAD
 timeout /t 5
+=======
+timeout /t 10
+>>>>>>> 0b300f8 (Fix: ngrok and rotate_keys issues, improved startup script)
 python get_ngrok_url.py > ngrok_url.txt
 
 set /p NGROK_URL=<ngrok_url.txt
